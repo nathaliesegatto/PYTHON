@@ -1,10 +1,3 @@
-# JOGO DE ADIVINHAÇÃO COM "FOR"
-# O usuário pode inserir diversos valores até que acerte o "número secreto".
-# Quantidade de tentativas LIMITADAS.
-# Função "RANGE", o último valor não é considerado. EX: (1,3) - vai repetir 2 vezes.
-# Função "RANGE", é possível incluir passo. EX: (1,10,2) - vai repetir de 1 a 9 a cada 2 números, ou seja, 4 vezes.
-
-
 print("**********************************")
 print()
 print("Bem-vindo ao jogo de adivinhação!")
@@ -16,24 +9,30 @@ numero_secreto = 17
 tentativas = 3
 rodada = 1
 
-for rodada in range(1, tentativas + 1):
-    print('Tentativa {} de {}'.format(rodada,
-                                      tentativas))  # Função "FORMAT" (.format(x,y)) para atribuir valores das variáveis aos colchetes.
+for rodada in range(1,
+                    tentativas + 1):  # O NÚMERO 1 REPRESENTA A PARTIDA, E O ÚLTIMO NÚMERO SERÁ SEMPRE O ANTERIOR AO ESCRITO
+    print('Tentativa {} de {}'.format(rodada, tentativas))
     chute = int(input('Digite um número inteiro entre 1 e 20: '))
-    if (chute == numero_secreto):
+    if (chute < 1 or chute > 100):
         print()
-        print('Parabéns! Você acertou.')
+        print('O número digitado é inválido.')
         print()
-        break  # O COMANDO BREAK ENCERRA O LAÇO DE REPETIÇÃO.
+        continue  # O COMANDO CONTINUE RETORNA PARA O INÍCIO DO LAÇO DE REPETIÇÃO.
     else:
-        if (chute < numero_secreto):
-            print('O número digitado é menor que o número secreto.')
+        if (chute == numero_secreto):
             print()
-            rodada = rodada + 1
-        elif (chute > numero_secreto):
-            print('O número digitado é maior que o número secreto.')
+            print('Parabéns! Você acertou.')
             print()
-            rodada = rodada + 1
+            break  # O COMANDO BREAK ENCERRA O LAÇO DE REPETIÇÃO.
+        else:
+            if (chute < numero_secreto):
+                print('O número digitado é menor que o número secreto.')
+                print()
+                rodada = rodada + 1
+            elif (chute > numero_secreto):
+                print('O número digitado é maior que o número secreto.')
+                print()
+                rodada = rodada + 1
 
 if (rodada == tentativas + 1):
     print()
