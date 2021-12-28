@@ -1,14 +1,3 @@
-# JOGO DE ADIVINHAÇÃO COM - USANDO A FUNÇÃO RANDOM
-# O usuário pode inserir diversos valores até que acerte o "número secreto".
-# Quantidade de tentativas LIMITADAS.
-# Função "RANGE", o último valor não é considerado. EX: (1,3) - vai repetir 2 vezes.
-# Função "RANGE", é possível incluir passo. EX: (1,10,2) - vai repetir de 1 a 9 a cada 2 números, ou seja, 4 vezes.
-# Função "FORMAT" (.format(x,y)) aplicada na linha 18 para atribuir valores das variáveis aos colchetes.
-# A função Random não faz parte do "Built In", é necessário importar (import random)
-# O número "random.random" vem entre 0 e 1 com casas decimais, é necessário multiplicá-lo por 100 e usar o arredondamento (round)
-# https://docs.python.org/3/library/random.html
-
-
 print("**********************************")
 print("Bem-vindo ao jogo de adivinhação!")
 print("**********************************")
@@ -54,24 +43,24 @@ elif (nivel == 3):
   print()
 
 import random
-numero_secreto = random.randrange(1,101) # O número "random.randrange" exige parâmetro (entre 1 e 101 nesse caso, pois considera o número anterior ao digitado)
+numero_secreto = random.randrange(1,101)
 rodada = 1
 
-for rodada in range(1, tentativas + 1): # O NÚMERO 1 REPRESENTA A PARTIDA, E O ÚLTIMO NÚMERO SERÁ SEMPRE O ANTERIOR AO ESCRITO
+for rodada in range(1, tentativas + 1):
     print('Tentativa {} de {}'.format(rodada, tentativas))
     chute = int(input('Digite um número inteiro entre 1 e 100: '))
     if (chute < 1 or chute > 100):
       print()
       print('O número digitado é inválido.')
       print()
-      continue # O COMANDO CONTINUE RETORNA PARA O INÍCIO DO LAÇO DE REPETIÇÃO.
+      continue
     else:
       if (chute == numero_secreto):
         print()
         print('Parabéns! Você acertou.')
         print('Total de pontos: ', pontos)
         print()
-        break # O COMANDO BREAK ENCERRA O LAÇO DE REPETIÇÃO.
+        break
       else:
         if (chute < numero_secreto):
           print()
